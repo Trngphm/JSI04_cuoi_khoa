@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!--pagination  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.css" integrity="sha512-QmxybGIvkSI8+CGxkt5JAcGOKIzHDqBMs/hdemwisj4EeGLMXxCm9h8YgoCwIvndnuN1NdZxT4pdsesLXSaKaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../app.css">
+</head>
+<body>
+  <div class="container">
+  
+    <section class="main">
+      <div class="collection-filter">
+        <div class="filter--style">
+          <div class="filter--style-title main-title">Style</div>
+          <select class="filter--style-list">
+            <option value="Kinh" class="filter--style-item">Kinh</option>
+            <option value="Tay" class="filter--style-item">Tay</option>
+          </select>
+        </div>
+        <div class="filter--size">
+          <div class="filter--size-title main-title">Size</div>
+          <div class="filter--size-list"></div>
+        </div>
+        <button class="filter-btn">Áp dụng</button>
+      </div>
+
+      <div class="products">
+        <div class="products-title"></div>
+        <div class="products-list">
+        </div>
+        <div id="pagination-container"></div>
+      </div>
+    </section>
+  </div>
+  <div class="color"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.min.js" integrity="sha512-1zzZ0ynR2KXnFskJ1C2s+7TIEewmkB2y+5o/+ahF7mwNj9n3PnzARpqalvtjSbUETwx6yuxP5AJXZCpnjEJkQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./shop.js" type="module"></script>
+<script src="../../app.js" type="module"></script>
+</body>
+</html>

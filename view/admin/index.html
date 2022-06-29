@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../app.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="product">
+        <div class="information">
+          <div class="information-images information-item">
+            <div class="images-title information-item--title">Image</div>
+            <div class="images">
+              <div class="image-item">
+                <div class="image-wrapper">
+                  <img class="image" />
+                  <input
+                    type="file"
+                    class="image-input"
+                    accept=".jpg, .png" multiple
+                  />
+                  <div class="image-icon">
+                    <i class="fa-solid fa-plus"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="image-item">
+                <div class="image-wrapper">
+                  <img class="image" />
+                  <input type="file" class="image-input" accept=".jpg, .png" multiple/>
+                  <div class="image-icon">
+                    <i class="fa-solid fa-plus"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="image-item">
+                <div class="image-wrapper">
+                  <img class="image" />
+                  <input type="file" class="image-input" accept=".jpg, .png" multiple/>
+                  <div class="image-icon">
+                    <i class="fa-solid fa-plus"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="image-item">
+                <div class="image-wrapper">
+                  <img class="image" />
+                  <input type="file" class="image-input" accept=".jpg, .png" multiple/>
+                  <div class="image-icon">
+                    <i class="fa-solid fa-plus"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="image-item">
+                <div class="image-wrapper">
+                  <img class="image" />
+                  <input type="file" class="image-input" accept=".jpg, .png" multiple/>
+                  <div class="image-icon">
+                    <i class="fa-solid fa-plus"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="information-item information-name">
+            <div class="information-item--title title">Name</div>
+            <input type="text" class="information-item--input" />
+          </div>
+          <div class="information-item">
+            <div class="information-item--title title">Price</div>
+            <input type="text" class="information-item--input" />
+          </div>
+          <!-- <div class="information-item">
+            <div class="information-item--title title">Kho</div>
+            <input type="text" class="information-item--input" />
+          </div> -->
+          <div class="information-item size">
+            <div class="information-item--title">Size</div>
+            <div class="size-wrapper">
+              <div class="size-content">
+                <ul class="size-list"></ul>
+                <input
+                  type="text"
+                  placeholder="Type and enter"
+                  class="size-input"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="information-item style">
+            <div class="information-item--title">Style</div>
+            <select class="style-list">
+              <option value="Kinh" class="style-item">Kinh</option>
+              <option value="Tay" class="style-item">Tay</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button class="add-btn">Add</button>
+    </div>
+    <script src="../../app.js" type="module"></script>
+    <script src="./admin.js" type="module"></script>
+  </body>
+</html>

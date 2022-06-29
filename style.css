@@ -1,0 +1,172 @@
+
+
+/* hero */
+.hero {
+  display: flex;
+  align-items: center;
+  margin-bottom: 105px;
+}
+
+/* .hero-content {
+  max-width: 350px;
+}
+
+.hero-subheading {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.hero-header {
+  font-size: 30px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.hero-desc {
+  margin-bottom: 20px;
+} */
+
+.hero-link {
+  text-decoration: underline;
+}
+
+/* -------------------- */
+
+/* story */
+.story {
+  margin-bottom: 105px;
+}
+
+.story-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0 20px;
+}
+
+.story-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 20px;
+  font-size: 16px;
+}
+
+.story-content {
+  min-width: 200px;
+}
+
+.story-heading {
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.story-desc {
+  margin-bottom: 15px;
+}
+
+.story-link a {
+  text-decoration: underline;
+}
+
+/* ----------------- */
+
+/* random products */
+.random-products {
+  margin-bottom: 105px;
+}
+
+.radom-products-heading {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.random-products--list {
+  display: flex;
+  align-items: center;
+  gap: 0 30px;
+  flex-wrap: wrap;
+}
+
+.random-products-item {
+  width: calc(33.33% - 30px);
+}
+
+.random-products-title {
+  font-weight: 600;
+  cursor: pointer;
+}
+.random-products-price {
+  font-size: 16px;
+}
+
+.random-products-image {
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+  object-fit: fill;
+  cursor: pointer;
+}
+
+.random-products-image img {
+  height: 100%;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+
+
+/* ----------------- */
+
+/* footer */
+.footer {
+  background-color: #f8f8f8;
+  padding: 50px 20px;
+}
+
+.footer-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-column:first-child {
+  max-width: 400px;
+}
+
+.footer .logo {
+  height: auto;
+}
+
+.footer-socials {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 0 30px;
+}
+
+.footer-social {
+  font-size: 26px;
+}
+
+.footer-social:hover {
+  color: var(--primary-color);
+}
+
+.footer-column .footer-title {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+
+.footer-item {
+  display: block;
+}
+
+.footer-item:hover {
+  color: var(--primary-color);
+}

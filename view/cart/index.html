@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../app.css">
+</head>
+<body>
+  <div class="container">
+    <section class="main">
+      <div class="cart-row">
+        <div class="left-col">
+          <div class="page-heading">
+            Giỏ Hàng
+            <span></span>
+          </div>
+          <div class="cart-wrapper">
+            <div class="cart">
+              <div class="cart-header">
+                <div class="cart-header-item">
+                  <!-- <label for="checkbox-all__input" class="checkbox-all">
+                    <input type="checkbox" name="checkbox-all__input" class="checkbox-all__input">
+                  </label> -->
+                  <span>Sản phẩm</span>
+                </div>
+                <div class="cart-header-item">Giá tiền</div>
+                <div class="cart-header-item">Số lượng</div>
+                <div class="cart-header-item">Số tiền</div>
+              </div>
+              <div class="cart-list"></div>
+            </div>
+          </div>
+        </div>
+        <div class="right-col">
+          <ul class="cart-totals">
+            <li class="cart-total cart-subtotal">
+              <div class="cart-total-label">Thành Tiền</div>
+              <div class="cart-total-value"></div>
+            </li>
+            <li class="cart-total">
+              <div class="cart-total-label">Phí Ship</div>
+              <div class="cart-total-value">&#8363;30.000</div>
+            </li>
+            <li class="cart-total">
+              <div class="cart-total-label">Mã giảm giá</div>
+              <button class="cart-total-value"></button>
+            </li>
+            <li class="cart-total cart-order--total">
+              <div class="cart-total-label">Tổng Tiền</div>
+              <div class="cart-total-value"></div>
+            </li>
+          </ul>
+          <button class="button-checkout">Mua Hàng</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../../app.js" type="module"></script>
+  <script src="./cart.js" type="module"></script>
+</body>
+</html>
