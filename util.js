@@ -92,8 +92,12 @@ class Header {
     this.menuItemRight.cart.classList.add("menu-cart")
     this.menuItemRight.cart.innerHTML = `
     <a href="/view/cart"><i class="fa-solid fa-cart-shopping"></i></a>
-    <span>${cartData.length}</span>
     `;
+    if (cartData) {
+      if (cartData.length != 0) {
+        this.menuItemRight.cart.innerHTML += `<span>${cartData.length}</span>`
+      }
+    }
 
     this.searchWrapper = useCreate("div");
     this.searchWrapper.classList.add("search-wrapper");

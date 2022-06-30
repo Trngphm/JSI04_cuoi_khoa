@@ -94,3 +94,6 @@ export const search = async (e) => {
 };
 
 searchWrapper.onkeydown = search;
+
+// add to local storage
+// localStorage.setItem("cart_data", JSON.stringify([]))

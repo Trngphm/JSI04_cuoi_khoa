@@ -114,6 +114,7 @@ class Product {
   // add to cart
   handle = (name, price, style, image) => {
     const cartAmmount = useSelect(".menu-cart span");
+    const menuCart = useSelect(".menu-cart");
     let sizeList = useSelectAll(".option-item__input");
     // let sizeTitle = useSelect(".size-list .option-title")
     this.optionTitle.size.innerHTML = ``;
@@ -144,11 +145,14 @@ class Product {
       let findProduct = dataList.find((item, index) => {
         return item.name == name && item.size == size;
       });
-      console.log(findProduct);
       if (findProduct) {
         findProduct.amount += 1;
       } else {
-        cartAmmount.innerText = dataList.length + 1;
+        if (cartAmmount) {
+          cartAmmount.innerText = dataList.length + 1;
+        } else {
+          menuCart.innerHTML += `<span>1</span>`
+        }
         dataList.push(data);
       }
       localStorage.setItem("cart_data", JSON.stringify(dataList));
