@@ -1,4 +1,4 @@
-import { useSelect, useSelectAll, style } from "../../util.js";
+import { useSelect, useSelectAll, style, loading } from "../../util.js";
 import {
   db,
   collection,
@@ -15,7 +15,7 @@ import {
   where,
 } from "../../config.js";
 import Product from "../product.js";
-import App, { RenderProduct, search, data } from "../../app.js";
+import App, { ExtendApp, search, data } from "../../app.js";
 import Header, { sizes } from "../../util.js";
 
 const productTitle = useSelect(".products-title");
@@ -26,9 +26,10 @@ const searchInput = useSelect(".search-input");
 
 // render
 const container = useSelect(".container");
-const shop = new RenderProduct(container);
+const shop = new ExtendApp(container);
 const app = new App(container);
 
+loading.show(5)
 function template(data) {
   let html = "";
   data.forEach((item, index) => {
@@ -81,6 +82,7 @@ $(document).ready(function () {
         $(".products-list").html(html);
       },
     });
+    loading.hide()
   }
   renderPagination(data);
 
@@ -89,7 +91,7 @@ $(document).ready(function () {
   async function renderProductFilter() {
     if (url.search) {
       let params = new URLSearchParams(url.search);
-      let searchProduct = []
+      let searchProduct = [];
       let filterProduct = [];
       // search
       const search = params.get("search");
@@ -132,15 +134,14 @@ $(document).ready(function () {
           renderPagination(filterProduct);
         }
       }
-      
+
       // empty
       console.log(searchProduct);
       console.log(filterProduct);
       if (searchProduct.length == 0 && filterProduct.length == 0) {
         console.log("Trang");
-      const productsList = useSelect(".products-list")
-      productsList.innerHTML +=
-      `
+        const productsList = useSelect(".products-list");
+        productsList.innerHTML += `
       <div class="products-empty">
         <div class="products-empty-image">
           <img srcset="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg//assets/a60759ad1dabe909c46a817ecbf71878.png 2x">
@@ -149,12 +150,10 @@ $(document).ready(function () {
           Không tìm thấy kết quả nào
         </div>
       </div>
-      `
-      productsList.style.justifyContent = "center"
+      `;
+        productsList.style.justifyContent = "center";
+      }
     }
-    }
-    
-    
   }
   renderProductFilter();
 
@@ -177,7 +176,9 @@ $(document).ready(function () {
 
 $(document).on("click", ".products-item", function () {
   let name = $(this).find(".products-name").text();
-  location.href = `#${name}`;
+  console.log(name);
+  location.hash = `product/${name}`;
+  console.log(location.hash);
 
   const result = data.find((item, index) => {
     return item.name == name;

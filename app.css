@@ -13,6 +13,7 @@ body {
   font-family: 'Poppins', sans-serif;
   color: black;
   font-size: 18px;
+  min-height: 100vh;
 }
 
 a {
@@ -76,9 +77,26 @@ ul {
 }
 
 .menu-item a:hover,
-.menu-item div:hover {
+.menu-item div span:hover {
   color: var(--primary-color);
 }
+
+.menu-login {
+  cursor: pointer;
+  position: relative;
+}
+
+.log-out {
+  padding: 3px 10px;
+  /* padding-bottom: 3px; */
+  box-shadow: 0 24px 54px rgb(0 0 0 / 15%), 0 4.5px 13.5px rgb(0 0 0 / 45%);
+  margin-top: 5px;
+  display: none;
+  text-align: center;
+  transition: .3s;
+  position: absolute;
+}
+
 
 .search-wrapper {
   width: 100%;
@@ -129,7 +147,7 @@ ul {
 #product-wrapper {
   display:flex;
   align-items: flex-start;
-  gap: 0 200px;
+  gap: 0 10em;
 }
 
 .product-image {
@@ -138,7 +156,7 @@ ul {
 }
 
 .product-name {
-  font-size: 40px;
+  font-size: 2.2em;
   font-weight: 600;
   margin-bottom: 10px;
   color: #213e4f;
@@ -264,4 +282,145 @@ ul {
 
 .add-button:hover {
   opacity: .8;
+}
+
+/* sigin in sign up */
+/* LOGIN SCREEN  */
+#login-screen, #signup-screen {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #ef32d9; 
+  background: -webkit-linear-gradient(
+    to right,
+    #89fffd,
+    #ef32d9
+  ); 
+  background: linear-gradient(
+    to right,
+    #89fffd,
+    #ef32d9
+  );
+}
+#login-form, #signup-form {
+  width: 350px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.title {
+  color: rgb(72, 197, 195);
+  font-weight: 600;
+  font-size: 35px;
+  margin-bottom: 40px;
+}
+.login-input, .signup-input {
+  width: 250px;
+  font-size: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid grey;
+  transition: 0.4s;
+}
+.login-input:focus,
+.signup-input:focus {
+  border-bottom: 2px solid rgb(114, 242, 239);
+}
+.login-button,
+.signup-button {
+  width: 250px;
+  padding: 10px;
+  margin-block: 20px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  background: #fc5c7d; 
+  background: -webkit-linear-gradient(
+    to right,
+    #6a82fb,
+    #fc5c7d
+  );
+  background: linear-gradient(
+    to right,
+    #6a82fb,
+    #fc5c7d
+  ); 
+  color: #fff;
+  border-radius: 4px;
+  transition: 0.4s;
+}
+.login-button:active,
+.signup-button:active {
+  transform: scale(0.9);
+}
+
+.signup-link,
+.signin-link {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  transition: .1s;
+}
+
+.signup-link:hover,
+.signin-link:hover {
+  border-bottom: 1px solid black;
+}
+
+/* loading animation */
+.loading-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #fff;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  width: 200px;
+  height: 200px;
+  display: hidden !important;
+}
+
+#avatar {
+  width: 100px;
+  height: 100px;
+  background: #f2f2f2;
+  border-radius: 50%;
+  outline: none;
+}
+
+.icon-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 20px;
+  margin-top: 10px;
+}
+
+.signup-icon,
+.signin-icon {
+  cursor: pointer;
+}
+
+.signup-icon img,
+.signin-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.signup-icon:nth-child(2) img,
+.signin-icon:nth-child(2) img {
+  width: 40px;
+  height: 40px;
 }

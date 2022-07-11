@@ -9,7 +9,8 @@ import {
   doc,
   query,
   deleteDoc,
-  where
+  where,
+  getDoc
 } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
 import {
   getStorage,
@@ -17,6 +18,13 @@ import {
   uploadBytes,
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-storage.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -36,6 +44,12 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 const storage = getStorage();
+const auth = getAuth(app)
+
+// sign up sign in
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 
 
 export {
@@ -51,7 +65,13 @@ export {
   getDownloadURL,
   query,
   deleteDoc,
-  where
+  where,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  auth,
+  getDoc
 };
 
 

@@ -1,6 +1,24 @@
-
-
-
+import {
+  db,
+  collection,
+  addDoc,
+  getDocs,
+  setDoc,
+  doc,
+  ref,
+  uploadBytes,
+  getStorage,
+  getDownloadURL,
+  query,
+  deleteDoc,
+  where,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  auth,
+  getDoc,
+} from "./config.js";
 
 export const useCreate = (tagName, className) => {
   const el = document.createElement(tagName);
@@ -41,6 +59,8 @@ class Header {
       login: useCreate("li", "menu-item"),
       cart: useCreate("li", "menu-item"),
     };
+    this.menuItemRight.login.classList.add("menu-login");
+
     const menuItems = [
       this.menuItemLeft.shop,
       this.menuItemLeft.admin,
@@ -73,7 +93,7 @@ class Header {
       },
       {
         title: "Login",
-        link: "#!",
+        link: "#signin",
       },
       {
         title: "",
@@ -86,16 +106,16 @@ class Header {
       if (title != "Search") {
         item.innerHTML = `<a href=${link}>${title}</a>`;
       } else {
-        item.innerHTML = `<div>${title}</div>`
+        item.innerHTML = `<div>${title}</div>`;
       }
     });
-    this.menuItemRight.cart.classList.add("menu-cart")
+    this.menuItemRight.cart.classList.add("menu-cart");
     this.menuItemRight.cart.innerHTML = `
     <a href="/view/cart"><i class="fa-solid fa-cart-shopping"></i></a>
     `;
     if (cartData) {
       if (cartData.length != 0) {
-        this.menuItemRight.cart.innerHTML += `<span>${cartData.length}</span>`
+        this.menuItemRight.cart.innerHTML += `<span>${cartData.length}</span>`;
       }
     }
 
@@ -209,11 +229,30 @@ export const style = [
   "Tày",
   "Xinh Mun",
 ];
-export const sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl']
-
+export const sizes = ["xs", "s", "m", "l", "xl", "xxl"];
 
 // random
 export function random(data) {
-  return Math.floor(Math.random() * data)
+  return Math.floor(Math.random() * data);
 }
+
+
+
+// loading
+class Loading {
+  constructor() {
+    this.container = useSelect(".loading-container")
+  }
+
+  show = () => {
+    this.container.style.display = "flex"
+  }
+
+  hide = () => {
+    this.container.style.display = "none"
+  }
+
+}
+
+export const loading = new Loading()
 

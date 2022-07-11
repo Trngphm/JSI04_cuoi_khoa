@@ -1,4 +1,4 @@
-import { useSelect, useSelectAll } from "../../util.js";
+import { useSelect, useSelectAll, loading } from "../../util.js";
 import {
   db,
   collection,
@@ -24,14 +24,14 @@ const leftCol = useSelect(".left-col")
 let subTotal = 0;
 let orderTotal;
 
-// plusBtn.onclick = () => {
-//   let value = Number(amountInput.value)
-//   value +=1
-//   amountInput.value = value
-// }
-
+loading.show()
 const cartList = useSelect(".cart-list");
 let cartData = JSON.parse(localStorage.getItem("cart_data"));
+if (!cartData) {
+  localStorage.setItem("cart_data",JSON.stringify([]))
+  cartData = JSON.parse(localStorage.getItem("cart_data"));
+
+}
 
 function emptyCart() {
   cartList.innerHTML += 
@@ -102,46 +102,83 @@ if (cartData.length == 0) {
 </div>
 `;
   }
+  loading.hide()
 }
 
 pageHeading.style.display = "flex";
 pageHeading.innerText = cartData.length;
 
-// cartList.innerHTML = "";
+// price item
+const priceItem = (amount, item, totalEl) => {
+  const price = amount * item.price
+  totalEl.html(`&#8363;` + price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")) 
+  const priceTotal = subTotal + price
+  cartSubtotal.innerHTML =
+  `&#8363;` + priceTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  orderTotal = priceTotal + 30000;
+  cartOrderTotal.innerHTML =
+  `&#8363;` + orderTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  cartData[item.id].amount = amount
+  console.log(cartData[item.id]);
+  console.log(cartData);
+  localStorage.setItem("cart_data", JSON.stringify(cartData))
+}
 
 // click button, amount
 $(document).on("click", ".button-minus", function () {
   let inputValue = Number($(this).parent().find(".amount-input").val());
   let amountInput = $(this).parent().find(".amount-input");
+  let totalEl = $(this).parent().parent().parent().find(".cart-item-total")
+  let name = $(this).parent().parent().parent().find(".cart-item-name")
+  const itemData = cartData.find((item, index) => {
+    return item.name == name.text()
+  })
   if (inputValue > 1) {
     inputValue -= 1;
     amountInput.val(inputValue);
+    priceItem(inputValue, itemData, totalEl)
   }
 });
 
 $(document).on("click", ".button-plus", function () {
   let inputValue = Number($(this).parent().find(".amount-input").val());
   let amountInput = $(this).parent().find(".amount-input");
+  let totalEl = $(this).parent().parent().parent().find(".cart-item-total")
+  let name = $(this).parent().parent().parent().find(".cart-item-name")
+  const itemData = cartData.find((item, index) => {
+    return item.name == name.text().trim()
+  })
   inputValue += 1;
   amountInput.val(inputValue);
+  priceItem(inputValue, itemData, totalEl)
 });
 
 $(document).on("change", ".amount-input", function () {
   let inputValue = Number($(this).val());
+  let totalEl = $(this).parent().parent().parent().find(".cart-item-total")
+  let name = $(this).parent().parent().parent().find(".cart-item-name")
+  const itemData = cartData.find((item, index) => {
+    return item.name == name.text()
+  })
   if (inputValue < 1 || !inputValue) {
     $(this).val(1);
+    priceItem(1, itemData, totalEl)
   } else {
     $(this).val(inputValue);
+    priceItem(inputValue, itemData, totalEl)
   }
 });
+
+
 
 // delete product
 $(document).on("click", ".delete-icon", function () {
   let el = $(this).parent();
   let name = $(".cart-item-content .cart-item-name", el).text();
   let findIndex = cartData.find((item, index) => {
-    return (item.name = name);
+    return item.name == name
   });
+  console.log(findIndex);
   cartData.splice(cartData.indexOf(findIndex), 1);
   localStorage.setItem("cart_data", JSON.stringify(cartData));
   el.remove();
@@ -151,6 +188,8 @@ $(document).on("click", ".delete-icon", function () {
     emptyCart()
   }
 });
+
+
 
 // cart total
 cartSubtotal.innerHTML =
