@@ -136,10 +136,7 @@ $(document).ready(function () {
       }
 
       // empty
-      console.log(searchProduct);
-      console.log(filterProduct);
       if (searchProduct.length == 0 && filterProduct.length == 0) {
-        console.log("Trang");
         const productsList = useSelect(".products-list");
         productsList.innerHTML += `
       <div class="products-empty">
@@ -157,28 +154,11 @@ $(document).ready(function () {
   }
   renderProductFilter();
 
-  // filter
-  // async function filter() {
-  // if (url.style) {
-  //   const q = query(collection(db, "products"), where("style", "==", `${style}`));
-  //   const aq = await getDocs(q);
-  //   aq.forEach((doc) => {
-  // // doc.data() is never undefined for query doc snapshots
-  //     console.log(doc.id, " => ", doc.data());
-  //   });
-  // }
-  // if (url.search) {
-  //   console.log(url.size);
-  // }
-  // }
-  // filter();
 });
 
 $(document).on("click", ".products-item", function () {
   let name = $(this).find(".products-name").text();
-  console.log(name);
   location.hash = `product/${name}`;
-  console.log(location.hash);
 
   const result = data.find((item, index) => {
     return item.name == name;
@@ -208,14 +188,11 @@ filterBtn.onclick = async () => {
       size = i.value;
     }
   }
-  console.log(size);
   // url param
   const url = new URL(window.location.origin.toString() + "/view/shop/");
   let params = new URLSearchParams(url.search);
   if (style != "Tất cả") params.append("style", style);
   if (size) params.append("size", size);
-  console.log(params);
   let newUrl = new URL(`${url.origin}${url.pathname}?${params}`);
-  console.log(newUrl);
   location.href = newUrl;
 };

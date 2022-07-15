@@ -154,6 +154,9 @@ ul {
   height: 700px;
   object-fit: cover;
 }
+.product-image img {
+  object-fit: cover;
+}
 
 .product-name {
   font-size: 2.2em;
@@ -221,8 +224,9 @@ ul {
 
 .option-item__input:checked+.option-item__label {
   width: 100%;
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
 }
 
 .add-cart-wrapper {

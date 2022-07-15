@@ -142,8 +142,9 @@ class Product {
       if (JSON.parse(localStorage.getItem("cart_data"))) {
         dataList = JSON.parse(localStorage.getItem("cart_data"));
       }
+      console.log(dataList);
       data.id  = dataList.length
-      console.log(data);
+      
       let findProduct = dataList.find((item, index) => {
         return item.name == name && item.size == size;
       });
@@ -157,7 +158,9 @@ class Product {
         }
         dataList.push(data);
       }
+      console.log(dataList);
       localStorage.setItem("cart_data", JSON.stringify(dataList));
+      console.log(JSON.parse(localStorage.getItem("cart_data")));
     }
   };
 

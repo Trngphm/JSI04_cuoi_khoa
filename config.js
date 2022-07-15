@@ -10,7 +10,8 @@ import {
   query,
   deleteDoc,
   where,
-  getDoc
+  getDoc,
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
 import {
   getStorage,
@@ -71,7 +72,8 @@ export {
   onAuthStateChanged,
   signOut,
   auth,
-  getDoc
+  getDoc,
+  updateDoc
 };
 
 

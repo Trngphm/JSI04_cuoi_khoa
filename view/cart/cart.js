@@ -30,7 +30,6 @@ let cartData = JSON.parse(localStorage.getItem("cart_data"));
 if (!cartData) {
   localStorage.setItem("cart_data",JSON.stringify([]))
   cartData = JSON.parse(localStorage.getItem("cart_data"));
-
 }
 
 function emptyCart() {
@@ -119,8 +118,6 @@ const priceItem = (amount, item, totalEl) => {
   cartOrderTotal.innerHTML =
   `&#8363;` + orderTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   cartData[item.id].amount = amount
-  console.log(cartData[item.id]);
-  console.log(cartData);
   localStorage.setItem("cart_data", JSON.stringify(cartData))
 }
 
@@ -178,7 +175,6 @@ $(document).on("click", ".delete-icon", function () {
   let findIndex = cartData.find((item, index) => {
     return item.name == name
   });
-  console.log(findIndex);
   cartData.splice(cartData.indexOf(findIndex), 1);
   localStorage.setItem("cart_data", JSON.stringify(cartData));
   el.remove();

@@ -28,23 +28,19 @@ function renderRandom() {
     </div>
     `;
     dataRandom.splice(product, 1);
-    // console.log(data);
   }
 }
 renderRandom();
-console.log(data);
 
 // click
 
 $(document).on("click", ".random-products-item", function () {
   let name = $(this).find(".random-products-title").text();
-  console.log(name);
   location.href = `#${name}`;
 
   const result = data.find((item, index) => {
     return item.name == name;
   });
-  console.log(result);
   shop.render(
     new Product(
       result.name,

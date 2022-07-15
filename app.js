@@ -19,6 +19,7 @@ import {
   signOut,
   auth,
   getDoc,
+  updateDoc
 } from "./config.js";
 import SignIn from "./view/signIn.js";
 import SignUp from "./view/signUp.js";
@@ -158,7 +159,9 @@ onAuthStateChanged(auth, async (user) => {
     const docSnap = await getDoc(docRef);
     const userData = docSnap.data();
     const loginLink = useSelect(".menu-login");
-    console.log(loginLink);
+    
+
+
     loginLink.innerHTML = `
     <div>
       <span>${userData.userName}</span>
@@ -176,12 +179,18 @@ onAuthStateChanged(auth, async (user) => {
       logOut.style.display = "none";
     };
 
-    // logout
-    // const logOut = useSelect(".log-out");
-    console.log(logOut);
 
-    const handleLogOut = () => {
-      localStorage.removeItem("uid");
+    // logout
+
+    const handleLogOut = async () => {
+      const userCartUpload = JSON.parse(localStorage.getItem("cart_data"))
+      console.log(userCartUpload);
+      await updateDoc(docRef, {
+        cartData: userCartUpload
+      })
+      localStorage.clear()
+      
+      
       signOut(auth)
         .then(() => {
           location.href = "#signin";
@@ -199,4 +208,4 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-
+console.log(JSON.parse(localStorage.getItem("cart_data")));
