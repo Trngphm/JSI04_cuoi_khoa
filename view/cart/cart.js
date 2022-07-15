@@ -110,6 +110,7 @@ pageHeading.innerText = cartData.length;
 // price item
 const priceItem = (amount, item, totalEl) => {
   const price = amount * item.price
+  console.log(item);
   totalEl.html(`&#8363;` + price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")) 
   const priceTotal = subTotal + price
   cartSubtotal.innerHTML =
@@ -128,12 +129,13 @@ $(document).on("click", ".button-minus", function () {
   let totalEl = $(this).parent().parent().parent().find(".cart-item-total")
   let name = $(this).parent().parent().parent().find(".cart-item-name")
   const itemData = cartData.find((item, index) => {
-    return item.name == name.text()
+    return item.name == name.text().trim()
   })
   if (inputValue > 1) {
     inputValue -= 1;
     amountInput.val(inputValue);
     priceItem(inputValue, itemData, totalEl)
+    console.log(itemData);
   }
 });
 
@@ -155,7 +157,7 @@ $(document).on("change", ".amount-input", function () {
   let totalEl = $(this).parent().parent().parent().find(".cart-item-total")
   let name = $(this).parent().parent().parent().find(".cart-item-name")
   const itemData = cartData.find((item, index) => {
-    return item.name == name.text()
+    return item.name == name.text().trim()
   })
   if (inputValue < 1 || !inputValue) {
     $(this).val(1);
